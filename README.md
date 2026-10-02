@@ -25,4 +25,4 @@ For collaboration:
 
 Owner: Greta B
 
-Collaborator: Name 2
+Collaborator: Kent M
