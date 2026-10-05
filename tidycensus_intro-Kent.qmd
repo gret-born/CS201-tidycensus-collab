@@ -10,9 +10,9 @@ toc: true
 ## Install and Load Packages
 
 ```{r Libraries}
-# install.packages("tidycensus")
-# install.packages("reactable")
-# install.packages("ggpubr")
+ install.packages("tidycensus")
+ install.packages("reactable")
+ install.packages("ggpubr")
 
 library(tidycensus)  # star of the show, what we will use to import data
 library(tidyverse) # you know her
@@ -41,7 +41,8 @@ API stands for Application Programming Interface. Here is the idea:
 [Request your own](https://api.census.gov/data/key_signup.html) or use Amber's (below).
 
 ```{r Define API Key, message=FALSE}
-census_api_key("")
+census_api_key("50e5d2386821608120296c40678e863da0c506a2")
+
 ```
 
 ## Import Variables
@@ -107,10 +108,10 @@ Now let's look at family poverty in Honolulu County over time
 ## Try an example of your own
 
 ```{r}
-# get the data (looking at ____)
-NAME <- get_acs(
+# get the data (looking at __computer and internet access__)
+Kent <- get_acs(
   geography = "tract",
-  variables = c(NAME = "DP02_0158"),
+  variables = c(Computer_access = "DP02_0152"),
   state = "HI",
   county = "Honolulu",
   geometry = TRUE,
@@ -119,11 +120,11 @@ NAME <- get_acs(
   dplyr::filter(GEOID != "15003981200" & GEOID !="15003981900")
 
 # map it
-oahu_unemployment_map <- ggplot(NAME) +
+oahu_unemployment_map <- ggplot(Kent) +
   geom_sf_interactive(
     aes(
-      fill = percent_unemploymentE,
-      tooltip = paste(NAME, ": ", percent_unemploymentE, "%"),
+      fill = Computer_accessE,
+      tooltip = paste(NAME, ": ", Computer_accessE, "%"),
       data_id = NAME)) +
   scale_fill_viridis_c(option = "plasma") +
   theme_void() 
