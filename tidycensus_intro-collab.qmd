@@ -7,7 +7,7 @@ editor: visual
 toc: true
 ---
 
-## Install and Load Packages
+## Install and Load Packages 
 
 ```{r Libraries}
 # install.packages("tidycensus")
