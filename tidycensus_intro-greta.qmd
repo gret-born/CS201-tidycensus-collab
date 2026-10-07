@@ -132,6 +132,31 @@ girafe(ggobj = computer_map, width = 700, height = 400)
 
 ```
 
+## Wednesday Warmup
+
+```{r}
+divorced <- get_acs(
+  geography = "tract",
+  variables = c(divorced = "DP02PR_0030"),
+  state = "PR",
+  geometry = TRUE,
+  output = "wide",
+  year = 2024) 
+
+# map it
+divorced_map <- ggplot(divorced) +
+  geom_sf_interactive(
+    aes(
+      fill = divorcedE,
+      tooltip = paste(NAME, ": ", divorcedE, "%"),
+      data_id = NAME)) +
+  scale_fill_viridis_c(option = "mako") +
+  theme_void() 
+
+girafe(ggobj = divorced_map, width = 700, height = 400)
+
+```
+
 ## Back to Exploring Poverty...
 
 ## Time Series
@@ -200,7 +225,7 @@ oahu_family_poverty_college_education <- get_acs(
 ```{r Scatter Plot, warning=FALSE, message=FALSE}
 ggplot(oahu_family_poverty_college_education, aes(x = percent_povertyE,y = percent_BAE)) +
   geom_point() +
-  geom_smooth() + # adds a regression line (LOESS)
+  geom_smooth(method = "lm") + # adds a regression line (LOESS)
   stat_cor() + # prints R and p
   theme_minimal() + 
   labs(title = "Comparing Rates of Higher Education to Poverty, Honolulu County",
@@ -243,14 +268,31 @@ REMEMBER! [Pull]{.underline} before working in the `-collab.qmd` file. [Save, Co
 Investigating (insert variable here) on Oahu at the census tract level.
 
 ```{r, message=FALSE, warning=FALSE, results='hide'}
-
-
+HAWN_P <- get_acs(
+  geography = "tract",
+  variables = c(percent_HAWN_P = "DP05_0069P"),
+  state = "HI",
+  county = "Honolulu",
+  geometry = TRUE,
+  output = "wide",
+  year = 2024) %>% 
+  dplyr::filter(GEOID != "15003981200" & GEOID !="15003981900")
 ```
 
 ### Mapping
 
 ```{r, message=FALSE, warning=FALSE, results='hide'}
 
+HAWN_P_MAP <- ggplot(HAWN_P) +
+  geom_sf_interactive(
+    aes(
+      fill = percent_HAWN_PE,
+      tooltip = paste(NAME, ": ", percent_HAWN_PE, "%"),
+      data_id = NAME)) +
+  scale_fill_viridis_c(option = "plasma") +
+  theme_void() 
+
+girafe(ggobj = HAWN_P_MAP, width = 700, height = 400)
 
 ```
 
