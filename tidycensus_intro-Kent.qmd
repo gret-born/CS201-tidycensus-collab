@@ -22,7 +22,7 @@ library(ggpubr) # does some statistics and prints the results on our graphs
 options(progress_enabled = FALSE)
 ```
 
-## Today's Data-"Kent was here"
+## Today's Data-"Kent was here"...
 
 test
 
