@@ -24,6 +24,8 @@ options(progress_enabled = FALSE)
 
 ## Today's Data
 
+test
+
 The data we will use for this activity comes directly from the US Census Bureau! This data is public and free, but does require some specialized knowledge/skill to acquire and use. You'll learn that today!
 
 You can always visit the [Census website](https://data.census.gov) and grab data from there. But there is another way: using an API!
