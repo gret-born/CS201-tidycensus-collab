@@ -7,7 +7,7 @@ editor: visual
 toc: true
 ---
 
-## Install and Load Packages 
+## Install and Load Packages
 
 ```{r Libraries}
 # install.packages("tidycensus")
@@ -271,7 +271,7 @@ HAWN_P_MAP <- ggplot(HAWN_P) +
 girafe(ggobj = HAWN_P_MAP, width = 700, height = 400)
 ```
 
-### Time Series
+### Time Series 
 
 ```{r, message=FALSE, warning=FALSE, results='hide'}
 
