@@ -328,3 +328,5 @@ ggplot(Oahu_Poverty_HAWN , aes(x = percent_povertyE,y = HAWN_PE)) +
 ```
 
 ### Describe what you found
+
+Each dot represents a "tract" on the island shows the percentage of Native Hawaiians and Pacific Islanders and the percentage of families living below the poverty line within the tract. This does not necessarily mean that the Native Hawaiian and Pacfic Islander population is the group experiencing poverty, but overlap is possible.
