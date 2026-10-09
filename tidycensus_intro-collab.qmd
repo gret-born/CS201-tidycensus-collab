@@ -1,6 +1,6 @@
 ---
 title: "tidycensus Intro & GitHub Collab"
-author: "Gretta and Kent" 
+author: "Greta and Kent" 
 date: "`r Sys.Date()`"
 format: html
 editor: visual
@@ -291,7 +291,7 @@ HAWN_P_MAP_2014_2024 <- map_dfr(years, ~{
 ggplot(HAWN_P_MAP_2014_2024, aes(x = year, y = estimate, group = 1)) + 
   geom_line(colour = "navy") + 
   geom_point(colour = "navy") +
-  labs(title = "Honolulu County Native Hawaiin/Pacific Islander Index (ACS Rolling 5-year estimates)", 
+  labs(title = "Honolulu County Native Hawaiin/Pacific Islander Index", 
        x = "ACS Release Year (5-year window)",
        y = "Percent HAWN_P")
 ```
