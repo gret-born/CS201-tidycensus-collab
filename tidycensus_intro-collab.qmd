@@ -271,11 +271,29 @@ HAWN_P_MAP <- ggplot(HAWN_P) +
 girafe(ggobj = HAWN_P_MAP, width = 700, height = 400)
 ```
 
-### Time Series 
+### Time Series
 
 ```{r, message=FALSE, warning=FALSE, results='hide'}
 
+years <- 2014:2024 # specify years
+names(years) <- years
 
+HAWN_P_MAP_2014_2024 <- map_dfr(years, ~{
+  get_acs(
+    geography = "county",
+    variables = c(percent_HAWN_P = "DP05_0069P"),
+    state = "HI",
+    county = "Honolulu",
+    year = .x,
+    survey = "acs5")}, .id = "year")
+
+
+ggplot(HAWN_P_MAP_2014_2024, aes(x = year, y = estimate, group = 1)) + 
+  geom_line(colour = "navy") + 
+  geom_point(colour = "navy") +
+  labs(title = "Honolulu County Native Hawaiin/Pacific Islander Index (ACS Rolling 5-year estimates)", 
+       x = "ACS Release Year (5-year window)",
+       y = "Percent HAWN_P")
 ```
 
 ### Scatter Plot
